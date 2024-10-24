@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打磚塊遊戲</title>
+    <!-- 引入 Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container text-center mt-5">
+        <h1 class="mb-4">打磚塊遊戲</h1>
+        
+        <!-- 遊戲畫布 -->
+        <div id="game-container" class="d-flex justify-content-center">
+            <canvas id="gameCanvas" width="800" height="600" class="border"></canvas>
+    
+            <!-- 新增的右側說明區塊 -->
+            <div id="gameInstructions" class="border p-3">
+                <h3>遊戲玩法及操作說明<hr></h3>
+                <p><strong>遊戲目標：</strong>使用擋板反彈小球，打擊並消除所有磚塊。</p>
+                <p><strong>操作方法：</strong></p>
+                <ul>
+                    <li>滑鼠左鍵or空白鍵:球從擋板彈出</li>
+                    <li>滑鼠移動or方向鍵左右:移動擋板</li>
+                    <li>右鍵or左ctrl：讓擋板跳躍<hr></li>
+                </ul>
+                <p><strong>特殊規則：</strong></p>
+                <ul>
+                    <li>擋板跳躍:使用後要等兩秒冷卻</li>
+                    <li>每300分會增加生命值</li>
+                    <li>連擊分數會增加</li>
+                    <li>隱藏方塊:球碰到後才能擊破<hr></li>
+                </ul>
+                <p>擊中所有磚塊後進入下一關<br>生命用盡後遊戲結束。</p>
+            </div>
+        </div>
+    
+        <!-- 控制面板 -->
+        <div id="control-panel" class="mt-4">
+            <div class="form-group d-inline-block">
+                <label for="difficulty">選擇難度：</label>
+                <select id="difficulty" class="custom-select w-auto">
+                    <option value="easy">簡單</option>
+                    <option value="medium">中等</option>
+                    <option value="hard">困難</option>
+                </select>
+            </div>
+            <button id="startBtn" class="btn btn-primary ml-3">開始遊戲</button>
+            <button id="restartBtn" class="btn btn-danger ml-3" style="display:none;">重新開始</button>
+        </div>
+    </div>
+
+    <!-- 音效與背景音樂 -->
+    <audio id="bgMusic" loop>
+        <source src="background-music.mp3" type="audio/mpeg">
+        您的瀏覽器不支援音樂播放功能。
+    </audio>
+    <audio id="hitSound">
+        <source src="hit-sound.mp3" type="audio/mpeg">
+        您的瀏覽器不支援音效播放功能。
+    </audio>
+
+    <!-- 引入 Bootstrap JS 和 Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- 遊戲邏輯腳本 -->
+    <script src="game.js"></script>
+</body>
+</html>
